@@ -49,6 +49,7 @@ expand_friends AS (
         ON all_friends_1.friend_id = all_friends_3.user_id
         AND all_friends_3.friend_id = all_friends_2.friend_id
 )
+--Group by the user_id pair and count the number of common friends. Because we've counted both way, each eligible pair will have a counterpart with the opposite direction.
 
 SELECT a, b, COUNT(*)
 FROM expand_friends
