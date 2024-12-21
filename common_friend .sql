@@ -33,6 +33,8 @@ WITH all_friends AS (
     SELECT friend_id, user_id
     FROM friendship
 ),
+-- Join the union result twice, to find friends for each user_id. Filter the results to include common friend only. 
+--Note that it is impossible to list one of the user himself as the common friend, because the bf.friend_id = af.friend_id will not be satisfied.
 expand_friends AS (
     SELECT 
         all_friends_1.user_id AS a
